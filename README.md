@@ -68,6 +68,14 @@ Vue CLI v3.10.0
 ? Save preset as: VueJs-8base-Preset
 ```
 
+## Installing Dependencies
+Feel free to use Yarn or NPM as your prefered package manager.
+
+1. Application dependencies
+```sh
+npm install --save @8base/auth @8base/apollo-client apollo-cache-inmemory
+```
+
 ## Project setup
 ```
 npm install
