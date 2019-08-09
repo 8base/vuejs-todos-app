@@ -73,8 +73,14 @@ Feel free to use Yarn or NPM as your prefered package manager.
 
 1. Application dependencies
 ```sh
-npm install --save @8base/auth @8base/apollo-client apollo-cache-inmemory
+npm install --save @8base/web-auth0-auth-client graphql-tag apollo-cache-inmemory apollo-client apollo-link-http
 ```
+
+## Management Console Setup
+
+1. Create a workspace.
+2. Go to Settings > Authentication
+3. Create a new Authentication Profile using 8base Auth0
 
 ## Project setup
 ```

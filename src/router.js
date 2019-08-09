@@ -4,6 +4,9 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
+/**
+ * Let's impliment router based on example: https://scotch.io/tutorials/vue-authentication-and-route-handling-using-vue-router#toc-updating-the-vue-router-file
+ */
 export default new Router({
   mode: "history",
   base: process.env.BASE_URL,

@@ -53,3 +53,35 @@ ModuleClass {
 }
 
 ```
+
+## Schema:
+
+* User:
+	!Managed Table!
+	relations:
+		has_many: boards
+
+* Board:
+	attributes:
+		id: uuid
+		name: text
+	relations:
+		has_many: todos
+		belongs_to: user
+
+* Todo:
+	attributes:
+		id: uuid
+		description: text
+		status: switch 'PENDING', 'IN PROGRESS', 'COMPLETED'
+
+## Flow
+
+1. User opens application and is asked to authenticate if they are not signed in.
+2. Once signed in, the client Queries the API for all lists, each with its Tasks.
+3. The client establishes a Subscription with the API for rendering Todos / Tasks.
+4. Any Create, Update or Delete actions are executed using Mutations.
+5. The clients side Api module accesses all credentials from the auth module
+
+## State Manager
+Let's use this post as a guide for implimenting state magement with GraphQL API: https://markus.oberlehner.net/blog/combining-graphql-and-vuex/
