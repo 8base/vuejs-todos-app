@@ -82,6 +82,26 @@ npm install --save @8base/web-auth0-auth-client graphql-tag apollo-cache-inmemor
 2. Go to Settings > Authentication
 3. Create a new Authentication Profile using 8base Auth0
 
+## Create Todo Items Table
+
+1. Go to Data
+2. Create a new Table and name it "todoItems"
+3. Add a new field "description" of type "Text"
+4. Save Field
+5. Add a new field "status" of type "Switch" 
+6. In Appearence > Format select "Custom"
+7. Add the options "To Do", "In Progress" "Completed"
+8. Save Field
+
+## Create Todo Lists Table
+1. Create a new Table and name it "todoLists"
+2. Add a new field "name" of type "Text"
+3. Save Field
+4. Add a new field "todoItems" of type "Table"
+5. In Appearence > Table select the previously created table "todoItems"
+6. In Table Relationships select "Allow multiple todoItems per todoList"
+7. Save Field
+
 ## Project setup
 ```
 npm install
