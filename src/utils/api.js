@@ -1,6 +1,6 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
-// Example GraphQL QUERIES for reference while building 
+// Example GraphQL QUERIES for reference while building
 // standard API calls.
 
 // export const LIST_CREATE_MUTATION = gql`
