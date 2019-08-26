@@ -82,25 +82,32 @@ npm install --save @8base/web-auth0-auth-client graphql-tag apollo-cache-inmemor
 2. Go to Settings > Authentication
 3. Create a new Authentication Profile using 8base Auth0
 
-## Create Todo Items Table
+## Create Todos Table
 
 1. Go to Data
-2. Create a new Table and name it "todoItems"
-3. Add a new field "description" of type "Text"
+2. Create a new table and name it "Todos"
+3. Add a new field "Description" of type "Text"
 4. Save Field
-5. Add a new field "status" of type "Switch" 
+5. Add a new field "Status" of type "Switch" 
 6. In Appearence > Format select "Custom"
-7. Add the options "To Do", "In Progress" "Completed"
+7. Add the options "PENDING", "IN PROGRESS" "COMPLETED"
 8. Save Field
 
-## Create Todo Lists Table
-1. Create a new Table and name it "todoLists"
-2. Add a new field "name" of type "Text"
+## Create Boards Table
+1. Create a new table and name it "Boards"
+2. Add a new field "Name" of type "Text"
 3. Save Field
-4. Add a new field "todoItems" of type "Table"
-5. In Appearence > Table select the previously created table "todoItems"
-6. In Table Relationships select "Allow multiple todoItems per todoList"
+4. Add a new field "Todos" of type "Table"
+5. In Appearence > Table select the previously created table "Todos"
+6. In Table Relationships select "Allow multiple Todos per Board"
 7. Save Field
+
+## Bind Boards to User
+1. Select the Users table in System Tables
+2. Add a new field "Boards" of type "Table"
+3. In Appearence > Table select the previously created table "Boards"
+4. In Table Relationships select "Allow multiple Boards per User"
+5. Save Field
 
 ## Project setup
 ```

@@ -1,119 +1,119 @@
 import gql from "graphql-tag";
 
-// Example GraphQL QUERIES for reference while building
-// standard API calls.
+export const GET_BOARDS_QUERY = gql`
+  query getBoard {
+    boardsList {
+      items {
+        ...boardFields
+      }
+    }
+  }
 
-// export const LIST_CREATE_MUTATION = gql`
-//   mutation BrokerCreate($data: BrokerCreateInput!) {
-//     brokerCreate(data: $data) {
-//       id
-//     }
-//   }
-// `;
+  fragment boardFields on Board {
+    id
+    name
+    todos {
+      items {
+        ...todoFields
+      }
+    }
+  }
 
-// export const USERS_LISTS_LIST_QUERY = gql`
-//   query UsersList {
-//     usersList {
-//       items {
-//         id
-//         firstName
-//         lastName
-//       }
-//     }
-//   }
-// `;
+  fragment todoFields on Todo {
+    id
+    description
+    status
+  }
+`;
+/**
+ * BOARDS
+ */
+export const CREATE_BOARD_MUTATION = gql`
+  mutation createBoard($name: String!) {
+    boardCreate(data: { name: $name }) {
+      id
+      name
+    }
+  }
+`;
 
-// export const BROKER_DELETE_MUTATION = gql`
-//   mutation BrokerDelete($id: ID!) {
-//     brokerDelete(data: { id: $id }) {
-//       success
-//     }
-//   }
-// `;
+export const UPDATE_BOARD_MUTATION = gql`
+  mutation changeBoardName($boardId: ID!, $name: String!) {
+    boardUpdate(filter: { id: $boardId }, data: { name: $name }) {
+      id
+    }
+  }
+`;
 
-// export const CUSTOMER_CREATE_MUTATION = gql`
-//   mutation CustomerCreate($data: CustomerCreateInput!) {
-//     customerCreate(data: $data) {
-//       id
-//     }
-//   }
-// `;
+export const DELETE_BOARD_MUTATION = gql`
+  mutation deleteBoard($boardId: ID!) {
+    boardDelete(filter: { id: $boardId }) {
+      success
+    }
+  }
+`;
 
-// export const CUSTOMER_DELETE_MUTATION = gql`
-//   mutation CustomerDelete($id: ID!) {
-//     customerDelete(data: { id: $id }) {
-//       success
-//     }
-//   }
-// `;
+export const BOARDS_SUBSCRIPTION = gql`
+  subscription {
+    Board(filter: { mutation_in: [create, update, delete] }) {
+      updatedFields
+      node {
+        id
+      }
+    }
+  }
+`;
 
-// export const CUSTOMERS_LIST_QUERY = gql`
-//   query CustomersList {
-//     customersList {
-//       items {
-//         id
-//         user {
-//           email
-//           firstName
-//           lastName
-//         }
-//         purchases {
-//           count
-//         }
-//         sales {
-//           count
-//         }
-//       }
-//     }
-//   }
-// `;
+/**
+ * TODOS
+ */
+export const CREATE_TODO_MUTATION = gql`
+  mutation createTodo($description: String!, $boardId: ID!) {
+    todoCreate(
+      data: { description: $description, board: { connect: { id: $boardId } } }
+    ) {
+      id
+      description
+      status
+    }
+  }
+`;
 
-// export const LISTING_CREATE_MUTATION = gql`
-//   mutation ListingCreate($data: ListingCreateInput!) {
-//     listingCreate(data: $data) {
-//       id
-//     }
-//   }
-// `;
+export const CHANGE_TODO_DESCRIPTION_MUTATION = gql`
+  mutation changeTodoDescription($todoId: ID!, $description: String!) {
+    todoUpdate(filter: { id: $todoId }, data: { description: $description }) {
+      id
+      description
+      status
+    }
+  }
+`;
 
-// export const LISTING_UPDATE_MUTATION = gql`
-//   mutation ListingUpdate($data: ListingUpdateInput!) {
-//     listingUpdate(data: $data) {
-//       id
-//     }
-//   }
-// `;
+export const CHANGE_TODO_STATUS_MUTATION = gql`
+  mutation changeTodoStatus($todoId: ID!, $status: String!) {
+    todoUpdate(filter: { id: $todoId }, data: { status: $status }) {
+      id
+      description
+      status
+    }
+  }
+`;
 
-// export const LISTING_SHARE_MUTATION = gql`
-//   mutation ListingShare($id: ID!, $email: String!) {
-//     listingShare(id: $id, email: $email) {
-//       success
-//     }
-//   }
-// `;
+export const DELETE_TODO_MUTATION = gql`
+  mutation deleteTodoItem($todoId: ID!) {
+    todoItemDelete(filter: { id: $todoId }) {
+      success
+    }
+  }
+`;
 
-// export const LISTING_DELETE_MUTATION = gql`
-//   mutation ListingDelete($id: ID!) {
-//     listingDelete(data: { id: $id }) {
-//       success
-//     }
-//   }
-// `;
-
-// export const BROKERS_LIST_QUERY = gql`
-//   query BrokersList {
-//     brokersList {
-//       items {
-//         id
-//         user {
-//           email
-//           firstName
-//           lastName
-//         }
-//         listings {
-//           count
-//         }
-//       }
-//     }
-//   }
-// `;
+export const TODOS_SUBSCRIPTION = gql`
+  subscription {
+    Todos(filter: { mutation_in: [create, update, delete] }) {
+      updatedFields
+      node {
+        id
+      }
+    }
+  }
+`;
