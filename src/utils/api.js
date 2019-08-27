@@ -100,8 +100,8 @@ export const CHANGE_TODO_STATUS_MUTATION = gql`
 `;
 
 export const DELETE_TODO_MUTATION = gql`
-  mutation deleteTodoItem($todoId: ID!) {
-    todoItemDelete(filter: { id: $todoId }) {
+  mutation deleteTodo($todoId: ID!) {
+    todoDelete(filter: { id: $todoId }) {
       success
     }
   }

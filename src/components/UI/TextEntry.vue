@@ -9,12 +9,8 @@
       />
     </div>
     <div class="control" v-if="icon">
-      <button
-        type="submit"
-        @click="onClick"
-        :disabled="input.length === 0"
-      >
-      <span class="icon"> > </span>
+      <button type="submit" @click="onClick" :disabled="input.length === 0">
+        <span class="icon"> > </span>
       </button>
     </div>
   </div>
@@ -68,7 +64,7 @@ export default {
 .text-field {
   margin: 5px;
 }
-.control{
+.control {
   display: inline;
 }
 </style>

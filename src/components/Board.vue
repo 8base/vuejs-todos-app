@@ -17,7 +17,7 @@
 
     <div>
       <div class="todos" v-for="todo in board.todos.items" :key="todo.id">
-        <todo :todo="todo" @status="updateStatus" />
+        <todo :todo="todo" @status="updateStatus" @delete="deleteTodo" />
       </div>
     </div>
   </section>
@@ -47,14 +47,12 @@ export default {
       this.$store.dispatch("updateTodoStatus", { todoId: id, status: status });
     },
 
-    deleteTodo({id}) {
+    deleteTodo({ id }) {
       this.$store.dispatch("deleteTodo", { todoId: id });
     },
 
     onDelete() {
-      this.$emit("delete", {
-          id: this.board.id
-        });
+      this.$emit("delete", { id: this.board.id });
     }
   }
 };

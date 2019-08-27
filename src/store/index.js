@@ -12,13 +12,12 @@ Vue.use(Vuex);
 
 /**
  * State maintains the applications state using Vuex.
- * 
+ *
  * @typedef {boards:array[]} State
  */
 export const state = {
   boards: []
 };
-
 
 export const mutations = {
   /**
@@ -31,7 +30,7 @@ export const mutations = {
 
 export const actions = {
   /**
-   * fetchBoards queries the 8base API for all boards 
+   * fetchBoards queries the 8base API for all boards
    * belonging to the authenticated user. The response
    * items are committed to state.boards.
    */
@@ -102,7 +101,6 @@ export const actions = {
         todoId: todo.todoId
       }
     });
-
     dispatch('fetchBoards');
   },
 
@@ -117,7 +115,6 @@ export const actions = {
         boardId: board.boardId
       }
     });
-
     dispatch('fetchBoards');
   }
 };

@@ -17,13 +17,13 @@ export default {
     BoardCanvas
   },
 
-  data () {
+  data() {
     return {
       loading: true
     };
   },
 
-  async mounted () {
+  async mounted() {
     this.loading = true;
     await this.$store.dispatch('fetchBoards');
     this.loading = false;
