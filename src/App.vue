@@ -1,13 +1,3 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
-</template>
-
 <style>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -17,7 +7,7 @@
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  padding: 0 0 30px;
 }
 
 #nav a {
@@ -29,3 +19,19 @@
   color: #42b983;
 }
 </style>
+
+
+<template>
+  <div id="app">
+    <h1>What's to do? Using Vue...</h1>
+
+    <!-- Simple nav -->
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
+    </div>
+    
+    <!-- Nav view -->
+    <router-view />
+  </div>
+</template>

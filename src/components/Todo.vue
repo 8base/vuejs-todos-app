@@ -30,9 +30,7 @@ export default {
     },
 
     onDelete() {
-      this.$emit("delete", {
-          id: this.todo.id
-        });
+      this.$emit("delete", { id: this.todo.id });
     }
   }
 }
