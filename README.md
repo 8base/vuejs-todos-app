@@ -94,6 +94,7 @@ npm install --save @8base/web-auth0-auth-client graphql-tag apollo-cache-inmemor
 8. Save Field
 
 ## Create Boards Table
+
 1. Create a new table and name it "Boards"
 2. Add a new field "Name" of type "Text"
 3. Save Field
@@ -101,6 +102,11 @@ npm install --save @8base/web-auth0-auth-client graphql-tag apollo-cache-inmemor
 5. In Appearence > Table select the previously created table "Todos"
 6. In Table Relationships select "Allow multiple Todos per Board"
 7. Save Field
+
+## Create Doer Role
+
+1. Go to Settings > Roles
+2. 
 
 ## Project setup
 ```

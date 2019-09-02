@@ -4,6 +4,9 @@ import graphqlClient from "@/utils/graphql";
 
 const AUTH_PROFILE_ID = "cjz1n3hw700ae01mlhe4tfepw";
 
+/**
+ * State maintains the authentication state using Vuex.
+ */
 const state = {
   authenticated: !!localStorage.getItem("access_token"),
   accessToken: localStorage.getItem("access_token"),
@@ -12,12 +15,18 @@ const state = {
 };
 
 const getters = {
+  /**
+   * Getter for retrieving authenticated status.
+   */
   authenticated(state) {
     return state.authenticated;
   }
 };
 
 const mutations = {
+  /**
+   * Updates the Vuex state's authentication data
+   */
   authenticated(state, authData) {
     state.authenticated = true;
     state.accessToken = authData.accessToken;
@@ -29,9 +38,10 @@ const mutations = {
     localStorage.setItem("expires_at", state.expiresAt);
   },
 
+  /**
+   * Cleans Vuex state's authentication data
+   */
   logout(state) {
-    auth.logout();
-
     state.authenticated = false;
     state.accessToken = null;
     state.idToken = false;
@@ -43,14 +53,25 @@ const mutations = {
 };
 
 const actions = {
+  /**
+   * launches Auth0 authentication
+   */
   login() {
     auth.authorize();
   },
 
+  /**
+   * Logs out and updates Vuex state's authentication data
+   */
   logout({ commit }) {
+    auth.logout();
     commit("logout");
   },
 
+  /**
+   * Checks if user is registered in 8base, if not signs up the user.
+   * Afterwards stores the authentication data in Vuex State
+   */
   async handleAuthentication({ commit }) {
     const authResult = await auth.getAuthorizedData();
 

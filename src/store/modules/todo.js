@@ -33,10 +33,10 @@ export const actions = {
   async fetchBoards({ commit }) {
     const response = await graphqlClient.query({
       query: gql.GET_BOARDS_QUERY,
-      fetchPolicy: 'network-only'
+      fetchPolicy: "network-only"
     });
 
-    commit('setBoards', response.data.boardsList.items);
+    commit("setBoards", response.data.boardsList.items);
   },
 
   /**
@@ -52,7 +52,7 @@ export const actions = {
       }
     });
 
-    dispatch('fetchBoards');
+    dispatch("fetchBoards");
   },
 
   /**
@@ -68,7 +68,7 @@ export const actions = {
         boardId: todo.boardId
       }
     });
-    dispatch('fetchBoards');
+    dispatch("fetchBoards");
   },
 
   /**
@@ -83,7 +83,7 @@ export const actions = {
         status: todo.status
       }
     });
-    dispatch('fetchBoards');
+    dispatch("fetchBoards");
   },
 
   /**
@@ -97,7 +97,7 @@ export const actions = {
         todoId: todo.todoId
       }
     });
-    dispatch('fetchBoards');
+    dispatch("fetchBoards");
   },
 
   /**
@@ -111,11 +111,16 @@ export const actions = {
         boardId: board.boardId
       }
     });
-    dispatch('fetchBoards');
+    dispatch("fetchBoards");
   }
 };
 
 export const getters = {
+  /**
+   * Getter for retrieving boards stored in state.
+   *
+   * (See src/views/Home.vue)
+   */
   boards: state => state.boards
 };
 

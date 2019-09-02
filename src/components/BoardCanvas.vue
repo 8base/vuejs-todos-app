@@ -36,3 +36,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.board-container {
+  text-align: left;
+}
+</style>

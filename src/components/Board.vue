@@ -1,25 +1,18 @@
 <template>
   <section class="board-container" ref="list" :data-id="board.id">
-    <div class="board-header">
-      <hr>
-      {{ board.name }}
-      <button class="btn" @click="onDelete">Delete</button>
-      <hr>
-    </div>
+    <hr>
+    <h2 class="board">{{ board.name }}</h2> 
+    <button class="delete" @click="onDelete">Delete</button>
 
-    <div class="todo-entry">
-      <textEntry
-        placeholder="Add a todo"
-        icon="ellipsis-h"
-        @enter="addTodo"
-      />
-    </div>
+    <textEntry
+      placeholder="Add a todo"
+      icon="ellipsis-h"
+      @enter="addTodo"
+    />
 
-    <div>
-      <div class="todos" v-for="todo in board.todos.items" :key="todo.id">
-        <todo :todo="todo" @status="updateStatus" @delete="deleteTodo" />
-      </div>
-    </div>
+    <ul class="todos" v-for="todo in board.todos.items" :key="todo.id">
+      <li><todo :todo="todo" @status="updateStatus" @delete="deleteTodo" /></li>
+    </ul>
   </section>
 </template>
 
@@ -57,3 +50,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.board {
+  display: inline;
+}
+.delete { 
+  margin-left: 10px;
+  display: inline;
+}
+</style>

@@ -1,17 +1,17 @@
 <template>
   <section class="todo-container" ref="todos" :data-id="todo.id">
-    <div v-if="todo.status == 'COMPLETED'" class="todo-description">
-      <strike>{{ todo.description }}</strike>
-    </div>
-    <div v-else class="todo-description">
-      {{ todo.description }}
-    </div>
     <div class="todo-status" style="width:200px;">
       <select v-model="todo.status" @change="onChangeStatus">
         <option value="PENDING">Pending</option>
         <option value="IN PROGRESS">In Progress</option>
         <option value="COMPLETED">Completed</option>
       </select>
+    </div>
+    <div v-if="todo.status == 'COMPLETED'" class="todo-description">
+      <strike> {{ todo.description }} </strike>
+    </div>
+    <div v-else class="todo-description">
+      {{ todo.description }}
     </div>
     <button class="btn" @click="onDelete">Delete</button>
   </section>
