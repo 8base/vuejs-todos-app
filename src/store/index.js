@@ -8,6 +8,8 @@ import Vuex from "vuex";
 import * as gql from "@/utils/api";
 import graphqlClient from "@/utils/graphql";
 
+import session from "@/modules/session";
+
 Vue.use(Vuex);
 
 /**
@@ -132,6 +134,9 @@ export const getters = {
  * Exports configured Vuex store
  */
 export default new Vuex.Store({
+  modules: {
+    session
+  },
   mutations,
   actions,
   state
