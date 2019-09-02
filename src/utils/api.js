@@ -24,7 +24,7 @@ export const GET_BOARDS_QUERY = gql`
       items {
         id
         name
-        todos {
+        todos(sort: { status: DESC }) {
           items {
             id
             description

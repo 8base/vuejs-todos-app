@@ -2,9 +2,9 @@
   <div class="home">
     <!--  -->
     <div v-if="authenticated">
-      <a href="#" @click="logout()">Log Out</a>
+      <button @click="logout()">Log Out</button>
       <h1 v-if="loading">Loading...</h1>
-      <BoardCanvas v-if="!loading" :boards="$store.state.boards" />
+      <BoardCanvas v-if="!loading" :boards="$store.state.todo.boards" />
     </div>
     <div v-else>
       <button @click="login()">Sign In</button>

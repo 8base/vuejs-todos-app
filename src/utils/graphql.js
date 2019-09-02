@@ -19,7 +19,11 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-//authentication
+/**
+ * Here we need to collect the authentication token
+ * from the auth module to add required bearer token
+ * to the headers.
+ */
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem("id_token");
@@ -32,11 +36,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-/**
- * Here we need to collect the authentication token
- * from the auth module to add required bearer token
- * to the headers.
- */
+//Create the apollo client
 export default new ApolloClient({
   // Provide the URL to the API server.
   link: errorLink.concat(authLink.concat(httpLink)),

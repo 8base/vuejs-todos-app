@@ -30,6 +30,8 @@ const mutations = {
   },
 
   logout(state) {
+    auth.logout();
+
     state.authenticated = false;
     state.accessToken = null;
     state.idToken = false;
