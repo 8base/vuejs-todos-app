@@ -102,13 +102,6 @@ npm install --save @8base/web-auth0-auth-client graphql-tag apollo-cache-inmemor
 6. In Table Relationships select "Allow multiple Todos per Board"
 7. Save Field
 
-## Bind Boards to User
-1. Select the Users table in System Tables
-2. Add a new field "Boards" of type "Table"
-3. In Appearence > Table select the previously created table "Boards"
-4. In Table Relationships select "Allow multiple Boards per User"
-5. Save Field
-
 ## Project setup
 ```
 npm install

@@ -1,6 +1,7 @@
 import { HttpLink } from "apollo-link-http";
 import { ApolloClient } from "apollo-client";
 import { onError } from "apollo-link-error";
+import { setContext } from "apollo-link-context";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
 const httpLink = new HttpLink({
@@ -18,6 +19,19 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
+//authentication
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem("id_token");
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : ""
+    }
+  };
+});
+
 /**
  * Here we need to collect the authentication token
  * from the auth module to add required bearer token
@@ -25,7 +39,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
  */
 export default new ApolloClient({
   // Provide the URL to the API server.
-  link: errorLink.concat(httpLink),
+  link: errorLink.concat(authLink.concat(httpLink)),
   // Using a cache for blazingly fast subsequent queries.
   cache: new InMemoryCache(),
   connectToDevTools: true

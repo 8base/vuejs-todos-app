@@ -32,12 +32,12 @@ export default {
 
   computed: mapGetters(["authenticated"]),
 
-  methods: mapActions(["login", "logout"]),
+  methods: mapActions(["login", "logout", "fetchBoards"]),
 
   async mounted() {
     if (this.authenticated) {
       this.loading = true;
-      await this.$store.dispatch("fetchBoards");
+      await this.fetchBoards();
       this.loading = false;
     }
   }

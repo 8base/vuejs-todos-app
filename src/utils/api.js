@@ -22,25 +22,17 @@ export const GET_BOARDS_QUERY = gql`
   query getBoard {
     boardsList {
       items {
-        ...boardFields
+        id
+        name
+        todos {
+          items {
+            id
+            description
+            status
+          }
+        }
       }
     }
-  }
-
-  fragment boardFields on Board {
-    id
-    name
-    todos {
-      items {
-        ...todoFields
-      }
-    }
-  }
-
-  fragment todoFields on Todo {
-    id
-    description
-    status
   }
 `;
 /**
