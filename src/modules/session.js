@@ -1,4 +1,8 @@
 import auth from "@/utils/auth.js";
+import * as gql from "@/utils/api";
+import graphqlClient from "@/utils/graphql";
+
+const AUTH_PROFILE_ID = "cjz1n3hw700ae01mlhe4tfepw";
 
 const state = {
   authenticated: !!localStorage.getItem("access_token"),
@@ -45,15 +49,29 @@ const actions = {
     commit("logout");
   },
 
-  handleAuthentication({ commit }) {
-    auth
-      .getAuthorizedData()
-      .then(authResult => {
-        commit("authenticated", authResult);
-      })
-      .catch(err => {
-        console.log(err);
+  async handleAuthentication({ commit }) {
+    const authResult = await auth.getAuthorizedData();
+
+    const context = {
+      headers: { authorization: `Bearer ${authResult.idToken}` }
+    };
+    // Check if user exists, if not it'll return an error
+    try {
+      await graphqlClient.query({
+        query: gql.CURRENT_USER_QUERY,
+        context
       });
+    } catch {
+      graphqlClient.mutate({
+        mutation: gql.USER_SIGN_UP_MUTATION,
+        variables: {
+          user: { email: authResult.email },
+          authProfileId: AUTH_PROFILE_ID
+        },
+        context
+      });
+    }
+    commit("authenticated", authResult);
   }
 };
 

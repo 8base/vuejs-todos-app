@@ -15,6 +15,6 @@ export default Auth.createClient(
     domain: AUTH0_CLIENT_DOMAIN,
     // Don't forget set custom domains in the authentication settings!
     redirectUri: `${window.location.origin}/auth/callback`,
-    logoutRedirectUri: `${window.location.origin}/auth`
+    logoutRedirectUri: `${window.location.origin}/`
   }
 );

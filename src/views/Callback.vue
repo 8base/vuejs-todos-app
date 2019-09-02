@@ -9,15 +9,13 @@ import router from '@/router'
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'Auth',
+  name: 'Callback',
 
   methods: mapActions(['handleAuthentication']),
 
-  data () {
-    this.handleAuthentication();
+  async mounted () {
+    await this.handleAuthentication();
     router.push({ name: 'home' });
-
-    return {}
   }
 }
 </script>
