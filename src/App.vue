@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <!-- App title -->
     <h1>What's to do? Using Vue...</h1>
 
     <!-- Simple nav -->
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about">About</router-link> | 
+      <router-link to="/profile">Profile</router-link>
     </div>
     
     <!-- Nav view -->

@@ -1,20 +1,31 @@
 import { Auth, AUTH_STRATEGIES } from "@8base/auth";
-
-// You can get this info from authentication settings page
-const AUTH0_CLIENT_ID = "p24uWnr2gGUxhUEUBOdfooYJSUIAX2E7";
-const AUTH0_CLIENT_DOMAIN = "secure.8base.com";
-
-// Auth0 auth client
+/**
+ * Creating an Authentication Profile in 8base will provide 
+ * you with a Client ID and Domain.
+ */
+const domain = 'secure.8base.com';
+const clientId = 'p24uWnr2gGUxhUEUBOdfooYJSUIAX2E7';
+/**
+ * The redirect and logout URIs are all configured in the 
+ * authentication profile that gets set up in the 8base
+ * management console.
+ */
+const logoutRedirectUri = `${window.location.origin}/`;
+const redirectUri = `${window.location.origin}/auth/callback`;
+/**
+ * There are multiple auth strategies that can be 
+ * used when using 8base. By default, specifying
+ * 'web_8base' will configure the 8base auth client.
+ */
 export default Auth.createClient(
   {
-    strategy: AUTH_STRATEGIES.WEB_AUTH0,
+    strategy: AUTH_STRATEGIES.WEB_8BASE,
     subscribable: true
   },
   {
-    clientId: AUTH0_CLIENT_ID,
-    domain: AUTH0_CLIENT_DOMAIN,
-    // Don't forget set custom domains in the authentication settings!
-    redirectUri: `${window.location.origin}/auth/callback`,
-    logoutRedirectUri: `${window.location.origin}/`
+    domain,
+    clientId,
+    redirectUri,
+    logoutRedirectUri
   }
 );
